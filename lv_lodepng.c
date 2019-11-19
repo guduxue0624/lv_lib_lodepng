@@ -150,6 +150,10 @@ static lv_res_t decoder_open(lv_img_decoder_t * decoder, lv_img_decoder_dsc_t * 
             /*Convert the image to the system's color depth*/
             convert_color_depth(img_data,  png_width * png_height);
             dsc->img_data = img_data;
+            if(png_data != NULL){
+                free(png_data);
+                png_data = NULL;
+            }
             return LV_RES_OK;     /*The image is fully decoded. Return with its pointer*/
         }
     }
